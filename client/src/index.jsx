@@ -1,6 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom'
-import ImageGallery from './components/ImageGallery.jsx'
+import React from "react";
+import ReactDOM from "react-dom";
 
+// const ImageGallery = (props) => (
+//  <div>TEST COMPONENT IS RUNNING</div>
+// )
 
-ReactDOM.render(<ImageGallery />, document.getElementById('image-gallery'));
+class ImageGallery extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return <div>IMAGE GALLERY</div>;
+  }
+}
+
+// export default ImageGallery;
+ReactDOM.render(<ImageGallery />, document.getElementById("image-gallery"));

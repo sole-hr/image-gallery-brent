@@ -7,14 +7,20 @@ class Title extends React.Component {
 
     this.state = {
       sku: props.sku,
-      productName: "Loading..."
+      title: "Loading...",
+      price: "Loading...",
+      category: "Loading..."
     };
   }
 
   componentDidMount() {
-    Axios.get(`http://localhost:3001/api/productName/${this.state.sku}`)
-      .then(productName => {
-        this.setState({ productName: productName.data });
+    Axios.get(`http://localhost:3001/api/title/${this.state.sku}`)
+      .then(title => {
+        this.setState({
+          title: title.data.productName,
+          price: title.data.price,
+          category: title.data.category
+        });
       })
       .catch(err => {});
   }
@@ -22,7 +28,9 @@ class Title extends React.Component {
     return (
       <div>
         <h3>Product Name</h3>
-        <div>{this.state.productName}</div>
+        <div>{this.state.title}</div>
+        <div>${this.state.price}</div>
+        <div>Category: {this.state.category}</div>
       </div>
     );
   }

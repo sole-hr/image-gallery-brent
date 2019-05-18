@@ -22,6 +22,7 @@ class ColorSelector extends React.Component {
   render() {
     return (
       <div>
+      <h3>Colors</h3>
         {this.state.colors.map((color, index) => {
           return (<span key={index}>{color + ' | '}</span>);
         })}

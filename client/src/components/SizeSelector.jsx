@@ -22,6 +22,7 @@ class SizeSelector extends React.Component {
   render() {
     return (
       <div>
+      <h3>Sizes</h3>
         {this.state.sizes.map((size, index) => {
           return <span key={index}>{size + ' | '}</span>;
         })}

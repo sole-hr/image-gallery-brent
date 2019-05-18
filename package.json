@@ -10,9 +10,7 @@
   },
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/index.js",
-    "restart": "pm2 startOrRestart ecosystem.config.js",
-    "deploy": "pm2 deploy ecosystem.config.js production"
+    "server-dev": "nodemon server/index.js"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",

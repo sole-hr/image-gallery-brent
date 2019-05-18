@@ -1,5 +1,5 @@
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 #title {
@@ -24,4 +24,9 @@ body {
 
 #description {
   background-color: grey;
+}
+
+#shoe-image {
+  height: 10%;
+  width: 10%;
 }

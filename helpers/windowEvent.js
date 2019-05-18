@@ -1,0 +1,1 @@
+const productSelectEvent = new CustomEvent('selectProduct', {});

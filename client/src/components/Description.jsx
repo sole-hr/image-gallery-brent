@@ -6,8 +6,8 @@ class Description extends React.Component {
     super(props);
 
     this.state = {
-      sku: "CJ0066-900",
-      description: ""
+      sku: props.sku,
+      description: "Loading..."
     };
   }
 
@@ -20,7 +20,12 @@ class Description extends React.Component {
   }
 
   render() {
-    return <div>{this.state.description}</div>;
+    return (
+      <div>
+      <h3>Description</h3>
+        <div>{this.state.description}</div>
+      </div>
+    )
   }
 }
 

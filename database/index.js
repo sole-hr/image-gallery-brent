@@ -15,6 +15,8 @@ let shoeSchema = mongoose.Schema({
   brand: String,
   price: Number,
   description: String,
+  colors: [String],
+  sizes: [Number],
   images: [String],
   reviews: [
     {

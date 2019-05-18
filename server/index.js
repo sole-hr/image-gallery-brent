@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 // const { Shoe } = require("../database/index.js");
 const bodyParser = require("body-parser");
-const port = 3001;
+const port = 3000;
 
 app.use(express.static(__dirname + "/../client/dist"));
 

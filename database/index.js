@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/fike");
-const shoeData = require("../../shoe-data-generator/shoeData.json");
+const shoeData = require("../shoedata/shoedata.json");
 const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "connection error:"));
@@ -47,4 +47,4 @@ let save = data => {
 
 module.exports.Shoe = Shoe;
 // console.log(shoeData.length);
-// save(shoeData);
+save(shoeData);

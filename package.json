@@ -13,7 +13,7 @@
     "server-dev": "nodemon server/index.js",
     "restart": "pm2 startOrRestart ecosystem.config.js",
     "deploy": "pm2 deploy ecosystem.config.js production",
-    "deploy-setup": "pm2 deploy ecosystem.config.js production setup"
+    "deploy-setup": "pm2 deploy ecosystem.config.js production setup",
   },
   "devDependencies": {
     "babel-core": "^6.23.1",

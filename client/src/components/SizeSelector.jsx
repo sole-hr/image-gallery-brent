@@ -9,6 +9,8 @@ class SizeSelector extends React.Component {
       sku: this.props.sku,
       sizes: []
     };
+
+    this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
@@ -19,12 +21,20 @@ class SizeSelector extends React.Component {
       .catch(err => {});
   }
 
+  onClick(event) {
+    console.log(event.target.getAttribute('value'));
+  }
+
   render() {
     return (
       <div>
-      <h3>Sizes</h3>
+        <h3>Sizes</h3>
         {this.state.sizes.map((size, index) => {
-          return <span key={index}>{size + ' | '}</span>;
+          return (
+            <span onClick={this.onClick} key={index} value={size}>
+              {size + " | "}
+            </span>
+          );
         })}
       </div>
     );

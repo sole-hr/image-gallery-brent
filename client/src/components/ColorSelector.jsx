@@ -9,6 +9,7 @@ class ColorSelector extends React.Component {
       sku: props.sku,
       colors: []
     };
+    this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
@@ -19,13 +20,17 @@ class ColorSelector extends React.Component {
       .catch(err => {});
   }
 
+  onClick(event) {
+    console.log(event.target.getAttribute('value'));
+  }
+
   render() {
     return (
       <div>
       <h3>Colors</h3>
         {this.state.colors.map((color, index) => {
           return (
-            <div className="color-block" key={index} style={{backgroundColor: color}}></div>
+            <div onClick={this.onClick} className="color-block" key={index} style={{backgroundColor: color}} value={color}></div>
             );
         })}
       </div>

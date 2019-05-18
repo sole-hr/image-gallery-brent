@@ -11,7 +11,7 @@ body {
 }
 
 #color-selector {
-  background-color: green;
+  background-color: grey;
 }
 
 #size-selector {
@@ -29,4 +29,10 @@ body {
 #shoe-image {
   height: 10%;
   width: 10%;
+}
+
+.color-block {
+  height: 35px;
+  width: 35px;
+  display: inline-block;
 }

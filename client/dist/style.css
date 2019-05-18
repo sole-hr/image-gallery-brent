@@ -1,11 +1,27 @@
 body {
-  background-color: blanchedalmond;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #title {
   background-color: red;
 }
 
-#image-gallery{
+#image-gallery {
   background-color: purple;
+}
+
+#color-selector {
+  background-color: green;
+}
+
+#size-selector {
+  background-color: beige;
+}
+
+#cart-favorite-buttons {
+  background-color: orange;
+}
+
+#description {
+  background-color: grey;
 }

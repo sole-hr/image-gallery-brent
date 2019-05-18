@@ -14,6 +14,7 @@ let shoeSchema = mongoose.Schema({
   sku: String,
   brand: String,
   price: Number,
+  description: String,
   images: [String],
   reviews: [
     {
@@ -35,7 +36,15 @@ let save = data => {
     } else {
       Shoe.update(data, { upsert: true });
     }
-  });
+  })
+    .then(response => {
+      console.log("SEEDED DB");
+    })
+    .catch(err => {
+      console.log("error", err);
+    });
 };
 
+module.exports.Shoe = Shoe;
+// console.log(shoeData.length);
 // save(shoeData);

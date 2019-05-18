@@ -3,6 +3,7 @@ const dotenv = require('dotenv').config();
 const express = require("express");
 const app = express();
 // const { Shoe } = require("../database/index.js");
+const port = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
 
 app.use(express.static(__dirname + "/../client/dist"));
@@ -20,6 +21,6 @@ app.get("/api/:info/:sku", (req, res) => {
   // console.log(req.params.sku);
 });
 
-app.listen(process.env.PORT, () => {
-  console.log("Ken's service listening on port, ", process.env.PORT);
+app.listen(port, () => {
+  console.log("Ken's service listening on port, ", port);
 });

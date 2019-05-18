@@ -47,4 +47,4 @@ let save = data => {
 
 module.exports.Shoe = Shoe;
 // console.log(shoeData.length);
-save(shoeData);
+// save(shoeData);

@@ -13,7 +13,7 @@ class ColorSelector extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(`http://localhost:3001/api/colors/${this.state.sku}`)
+    Axios.get(`/api/colors/${this.state.sku}`)
       .then(colors => {
         this.setState({ colors: colors.data });
       })

@@ -12,7 +12,7 @@ class ImageGallery extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(`http://localhost:3001/api/images/${this.state.sku}`)
+    Axios.get(`/api/images/${this.state.sku}`)
       .then(images => {
         this.setState({ images: images.data });
       })

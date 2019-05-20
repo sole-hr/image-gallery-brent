@@ -12,7 +12,7 @@ class Description extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(`http://localhost:3001/api/description/${this.state.sku}`)
+    Axios.get(`/api/description/${this.state.sku}`)
       .then(description => {
         this.setState({ description: description.data });
       })

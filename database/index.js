@@ -1,11 +1,16 @@
+// const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/fike");
 const shoeData = require("../shoedata/shoedata.json");
-const db = mongoose.connection;
+const database = 'fike';
 
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
-  console.log("Successfully connected to Fike DB");
+mongoose.connect(`mongodb+srv://image-gallery-root:${process.env.DB_PW}@image-gallery-db-d2iku.mongodb.net/${database}?retryWrites=true`, {
+  useNewUrlParser: true
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log("CONNECTED");
 });
 
 let shoeSchema = mongoose.Schema({
@@ -18,35 +23,29 @@ let shoeSchema = mongoose.Schema({
   colors: [String],
   sizes: [Number],
   images: [String],
-  reviews: [
-    {
-      user: String,
-      date: String,
-      stars: Number,
-      title: String,
-      description: String
-    }
-  ]
+  reviews: [{
+    user: String,
+    date: String,
+    stars: Number,
+    title: String,
+    description: String
+  }]
 });
 
 let Shoe = mongoose.model("Shoe", shoeSchema);
 
 let save = data => {
-  Shoe.insertMany(data, err => {
+  Shoe.insertMany(data, (err, response) => {
     if (err) {
       console.log("insertion error: ", err);
     } else {
-      Shoe.update(data, { upsert: true });
+      Shoe.update(data, {
+        upsert: true
+      });
+      console.log('SEEDED DB');
     }
-  })
-    .then(response => {
-      console.log("SEEDED DB");
-    })
-    .catch(err => {
-      console.log("error", err);
-    });
+  });
 };
 
 module.exports.Shoe = Shoe;
-// console.log(shoeData.length);
 // save(shoeData);

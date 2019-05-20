@@ -2,7 +2,9 @@ const dotenv = require("dotenv").config();
 console.log("ENV VARIABLES ", process.env.PORT);
 const express = require("express");
 const app = express();
-const { Shoe } = require("../database/index.js");
+const {
+  Shoe
+} = require("../database/index.js");
 const port = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
 
@@ -12,7 +14,9 @@ app.get("/api/:info/:sku", (req, res) => {
   const sku = req.params.sku;
   const info = req.params.info;
   if (info === "title") {
-    Shoe.findOne({ sku })
+    Shoe.findOne({
+        sku
+      })
       .exec((err, shoe) => {
         const titleInfo = {
           productName: shoe.productName,
@@ -21,14 +25,18 @@ app.get("/api/:info/:sku", (req, res) => {
         };
         res.json(titleInfo);
       })
-      .catch(err => {});
   } else {
-    Shoe.findOne({ sku })
-      .exec((err, shoe) => {
-        res.json(shoe[info]);
+    Shoe.findOne({
+        sku
       })
-      .catch(err => {
-        console.log("there was an error finding the item");
+      .exec((err, shoe) => {
+        if (err) {
+          console.log("Error finding SHOE");
+        } else {
+          res.json(shoe[info]);
+
+
+        }
       });
     console.log(req.params.sku);
   }

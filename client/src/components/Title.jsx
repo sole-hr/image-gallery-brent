@@ -14,7 +14,7 @@ class Title extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(`http://localhost:3001/api/title/${this.state.sku}`)
+    Axios.get(`/api/title/${this.state.sku}`)
       .then(title => {
         this.setState({
           title: title.data.productName,

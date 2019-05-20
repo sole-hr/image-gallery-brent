@@ -14,7 +14,7 @@ class SizeSelector extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(`http://localhost:3001/api/sizes/${this.state.sku}`)
+    Axios.get(`/api/sizes/${this.state.sku}`)
       .then(sizes => {
         this.setState({ sizes: sizes.data });
       })

@@ -9,7 +9,10 @@ import CartFavoriteButtons from "./components/CartFavoriteButtons.jsx";
 import Description from "./components/Description.jsx";
 
 const initialState = {
-  sku: "CJ0066-900"
+  sku: "CJ0066-900",
+  isFavorite: false,
+  color: '',
+  size: null
 };
 
 // export default ImageGallery;

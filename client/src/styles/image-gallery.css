@@ -13,3 +13,10 @@
 .modal-dialog {
     max-width: 100% !important;
 }
+
+  
+  #shoe-image {
+    height: 50%;
+    width: 50%;
+    padding: 1%;
+  }

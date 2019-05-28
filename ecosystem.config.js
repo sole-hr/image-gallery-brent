@@ -3,8 +3,9 @@ module.exports = {
     name: 'image-gallery',
     script: './server/index.js',
     env: {
-      "PORT": process.env.PORT,
-      "DB_PW": process.env.DB_PW
+      "NODE_ENV": "production",
+      "PORT": 3001,
+      "DB_PW": "hratx41password"
     }
   }],
   deploy: {

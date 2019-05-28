@@ -13,6 +13,7 @@
     "server-dev": "nodemon server/index.js",
     "restart": "pm2 startOrRestart ecosystem.config.js",
     "deploy": "pm2 deploy ecosystem.config.js production",
+    "deploy-compile": "webpack -d",
     "deploy-setup": "pm2 deploy ecosystem.config.js production setup"
   },
   "devDependencies": {
@@ -24,7 +25,8 @@
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "pm2": "^3.5.0",
     "style-loader": "^0.23.1",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-cli": "^3.3.2"
   },
   "dependencies": {
     "axios": "^0.18.0",

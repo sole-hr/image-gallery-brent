@@ -12,7 +12,7 @@ module.exports = {
       repo: 'git@github.com:nike-hratx41-fec/image-gallery.git',
       path: '/home/ubuntu/image-gallery',
       'pre-setup': "pm2 delete image-gallery && sudo rm -rf image-gallery",
-      'post-deploy': 'npm install && webpack -d && pm2 startOrRestart ecosystem.config.js'
+      'post-deploy': 'npm install && npm deploy-compile && pm2 startOrRestart ecosystem.config.js'
     }
   }
 }

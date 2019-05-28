@@ -15,7 +15,7 @@ class ColorSelector extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(`${process.env.API_URL}/api/colors/${this.state.sku}`)
+    Axios.get(`api/colors/${this.state.sku}`)
       .then(colors => {
         this.setState({ colors: colors.data });
       })

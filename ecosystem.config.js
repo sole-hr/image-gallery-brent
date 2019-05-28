@@ -1,7 +1,11 @@
 module.exports = {
   apps: [{
     name: 'image-gallery',
-    script: './server/index.js'
+    script: './server/index.js',
+    env: {
+      "PORT": process.env.PORT,
+      "DB_PW": process.env.DB_PW
+    }
   }],
   deploy: {
     production: {

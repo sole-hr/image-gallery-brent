@@ -1,5 +1,7 @@
 import React from "react";
 import Axios from "axios";
+import '../styles/size-selector.css';
+import { Button } from 'reactstrap';
 
 class SizeSelector extends React.Component {
   constructor(props) {
@@ -14,11 +16,11 @@ class SizeSelector extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(`/api/sizes/${this.state.sku}`)
+    Axios.get(`http://localhost:3001/api/sizes/${this.state.sku}`)
       .then(sizes => {
         this.setState({ sizes: sizes.data });
       })
-      .catch(err => {});
+      .catch(err => { });
   }
 
   onClick(event) {
@@ -28,14 +30,17 @@ class SizeSelector extends React.Component {
   render() {
     return (
       <div>
-        <h3>Sizes</h3>
-        {this.state.sizes.map((size, index) => {
-          return (
-            <span onClick={this.onClick} key={index} value={size}>
-              {size + " | "}
-            </span>
-          );
-        })}
+        <div className="size-title">
+          <p id="select-size">Select Size</p>
+          <p id="size-guide">Size Guide</p> <br />
+        </div>
+        <div className="size-grid">
+          {this.state.sizes.map((size, index) => {
+            return (
+              <Button color='bg-light' onClick={this.onClick} key={index} className="border size-button btn btn-light">{size}</Button>
+            );
+          })}
+        </div>
       </div>
     );
   }

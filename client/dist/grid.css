@@ -1,0 +1,9 @@
+.title-grid {
+    /* max-width: 800px; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.size-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

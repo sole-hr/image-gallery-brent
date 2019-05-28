@@ -1,13 +1,15 @@
 const dotenv = require("dotenv").config();
 console.log("ENV VARIABLES ", process.env.PORT);
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const {
   Shoe
 } = require("../database/index.js");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const bodyParser = require("body-parser");
 
+app.use(cors());
 app.use(express.static(__dirname + "/../client/dist"));
 
 app.get("/api/:info/:sku", (req, res) => {

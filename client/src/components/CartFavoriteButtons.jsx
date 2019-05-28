@@ -1,4 +1,5 @@
 import React from "react";
+import '../styles/cartfavorite-buttons.css';
 
 class CartFavoriteButtons extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class CartFavoriteButtons extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   onClick(event) {
     console.log(event.target.name, this.state.sku);
@@ -20,8 +21,8 @@ class CartFavoriteButtons extends React.Component {
   render() {
     return (
       <div>
-        <button name="add-cart" onClick={this.onClick}>Add to Cart</button>
-        <button name="favorite" onClick={this.onClick}>Favorite</button>
+        <button type="button" className="btn btn-dark rounded-pill cart-button" onClick={this.onClick}>Add to cart</button>
+        <button type="button" className="btn btn-outline-dark rounded-pill favorite-button" onClick={this.onClick}>Favorite</button>
       </div>
     );
   }

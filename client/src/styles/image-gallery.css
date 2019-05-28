@@ -1,0 +1,15 @@
+.modal-content {
+    /* width: 100%; */
+    /* overflow: auto; */
+    /* background-color: black; */
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+#exit-modal {
+    justify-self: end;
+}
+
+.modal-dialog {
+    max-width: 100% !important;
+}

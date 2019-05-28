@@ -1,5 +1,6 @@
 import React from "react";
 import Axios from "axios";
+import '../styles/description.css';
 
 class Description extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Description extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(`/api/description/${this.state.sku}`)
+    Axios.get(`http://localhost:3001/api/description/${this.state.sku}`)
       .then(description => {
         this.setState({ description: description.data });
       })

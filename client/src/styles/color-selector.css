@@ -1,0 +1,10 @@
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.size-button {
+    height: 48px;
+    margin: 2.5px; 
+  }
+  

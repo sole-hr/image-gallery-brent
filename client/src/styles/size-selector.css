@@ -1,0 +1,17 @@
+.size-title {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#select-size {
+    justify-self: start;
+}
+
+#size-guide {
+    justify-self: end;
+}
+
+.size-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}

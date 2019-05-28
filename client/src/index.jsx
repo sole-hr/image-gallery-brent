@@ -1,5 +1,6 @@
 import React from "react";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/index.css';
 import ReactDOM from "react-dom";
 import ImageGallery from "./components/ImageGallery.jsx";
 import Title from "./components/Title.jsx";

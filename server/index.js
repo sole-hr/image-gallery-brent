@@ -6,8 +6,8 @@ const app = express();
 // const {
 //   Shoe
 // } = require("../database/index.js");
-// const port = process.env.PORT || 3001;
-// const bodyParser = require("body-parser");
+const port = process.env.PORT || 3001;
+const bodyParser = require("body-parser");
 
 app.use(cors());
 app.use(express.static(__dirname + "/../client/dist"));

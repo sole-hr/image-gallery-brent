@@ -16,6 +16,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:nike-hratx41-fec/image-gallery.git',
       path: '/home/ubuntu/image-gallery',
+      'pre-deploy-local': "pm2 delete image-gallery && sudo rm -rf image-gallery",
       'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
     }
   }

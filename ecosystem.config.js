@@ -2,11 +2,6 @@ module.exports = {
   apps: [{
     name: 'image-gallery',
     script: './server/index.js',
-    env: {
-      NODE_ENV: "deployment",
-      "PORT": 3001,
-      "DB_PW": "hratx41password"
-    }
   }],
   deploy: {
     production: {

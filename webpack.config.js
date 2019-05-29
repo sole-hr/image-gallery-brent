@@ -5,8 +5,14 @@ const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: {
-    renderer: `${SRC_DIR}/index.jsx`,
-    components: [`${SRC_DIR}/components/Title.jsx`, `${SRC_DIR}/components/SizeSelector.jsx`]
+    renderer: `${SRC_DIR}/Renderer.jsx`,
+    title: `${SRC_DIR}/components/Title.jsx`,
+    imageGallery: `${SRC_DIR}/components/ImageGallery.jsx`,
+    colorSelector: `${SRC_DIR}/components/ColorSelector.jsx`,
+    sizeSelector: `${SRC_DIR}/components/SizeSelector.jsx`,
+    cartFavoriteButtons: `${SRC_DIR}/components/CartFavoriteButtons.jsx`,
+    description: `${SRC_DIR}/components/Description.jsx`,
+    app: `${SRC_DIR}/components/App.jsx`,
   },
   output: {
     filename: "[name]-bundle.js",

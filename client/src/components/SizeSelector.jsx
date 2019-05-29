@@ -65,4 +65,5 @@ class SizeSelector extends React.Component {
   }
 }
 
+window.SizeSelector = SizeSelector;
 export default SizeSelector;

@@ -46,4 +46,5 @@ class CartFavoriteButtons extends React.Component {
   }
 }
 
+window.CartFavoriteButtons = CartFavoriteButtons;
 export default CartFavoriteButtons;

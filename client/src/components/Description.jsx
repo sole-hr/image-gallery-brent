@@ -43,4 +43,5 @@ class Description extends React.Component {
   }
 }
 
+window.Description = Description;
 export default Description;

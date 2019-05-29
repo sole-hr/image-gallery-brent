@@ -1,6 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import '../styles/title.css'
+import "../styles/title.css";
 
 class Title extends React.Component {
   constructor(props) {
@@ -14,24 +14,38 @@ class Title extends React.Component {
     };
   }
 
-  componentDidMount() {
-    Axios.get(`${process.env.API_URL}/api/title/${this.state.sku}`)
+  fetchTitleData(sku) {
+    Axios.get(`${process.env.API_URL}/api/title/${sku}`)
       .then(title => {
         this.setState({
+          sku: sku,
           title: title.data.productName,
           price: title.data.price,
           category: title.data.category
         });
       })
-      .catch(err => { });
+      .catch(err => {});
   }
+
+  componentDidMount() {
+    this.fetchTitleData(this.state.sku);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.sku !== prevProps.sku) {
+      this.fetchTitleData(this.props.sku);
+    }
+  }
+
   render() {
     return (
       <div>
-          <div className="title-grid">
-            <p>Basketball Shoe</p>
-            <p id="price" className="h6">${this.state.price}</p>
-            <p className="h5">{this.state.title}</p>
+        <div className="title-grid">
+          <p>Basketball Shoe</p>
+          <p id="price" className="h6">
+            ${this.state.price}
+          </p>
+          <p className="h5">{this.state.title}</p>
         </div>
       </div>
     );

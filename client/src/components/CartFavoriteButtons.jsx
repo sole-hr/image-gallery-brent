@@ -14,6 +14,12 @@ class CartFavoriteButtons extends React.Component {
 
   componentDidMount() {}
 
+  componentDidUpdate(prevProps) {
+    if (this.props.sku !== prevProps.sku) {
+      this.setState({ sku: this.props.sku });
+    }
+  }
+
   onClick(event) {
     console.log(event.target.name, this.state.sku);
   }

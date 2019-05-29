@@ -1,6 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import '../styles/description.css';
+import "../styles/description.css";
 
 class Description extends React.Component {
   constructor(props) {
@@ -12,21 +12,34 @@ class Description extends React.Component {
     };
   }
 
-  componentDidMount() {
-    Axios.get(`${process.env.API_URL}/api/description/${this.state.sku}`)
+  fetchDescriptionData(sku) {
+    Axios.get(`${process.env.API_URL}/api/description/${sku}`)
       .then(description => {
-        this.setState({ description: description.data });
+        this.setState({
+          sku: sku,
+          description: description.data
+        });
       })
       .catch(err => {});
+  }
+
+  componentDidMount() {
+    this.fetchDescriptionData(this.state.sku);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.sku !== prevProps.sku) {
+      this.fetchDescriptionData(this.props.sku);
+    }
   }
 
   render() {
     return (
       <div>
-      <h3>Description</h3>
+        <h3>Description</h3>
         <div>{this.state.description}</div>
       </div>
-    )
+    );
   }
 }
 

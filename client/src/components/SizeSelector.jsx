@@ -1,7 +1,7 @@
 import React from "react";
 import Axios from "axios";
-import '../styles/size-selector.css';
-import { Button } from 'reactstrap';
+import "../styles/size-selector.css";
+import { Button } from "reactstrap";
 
 class SizeSelector extends React.Component {
   constructor(props) {
@@ -15,16 +15,28 @@ class SizeSelector extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  componentDidMount() {
-    Axios.get(`${process.env.API_URL}/api/sizes/${this.state.sku}`)
+  fetchSizeData(sku) {
+    Axios.get(`${process.env.API_URL}/api/sizes/${sku}`)
       .then(sizes => {
-        this.setState({ sizes: sizes.data });
+        this.setState({ 
+          sku: sku,
+          sizes: sizes.data });
       })
-      .catch(err => { });
+      .catch(err => {});
+  }
+
+  componentDidMount() {
+    this.fetchSizeData(this.state.sku);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.sku !== prevProps.sku) {
+      this.fetchSizeData(this.props.sku);
+    }
   }
 
   onClick(event) {
-    console.log(event.target.getAttribute('value'));
+    console.log(event.target.getAttribute("value"));
   }
 
   render() {
@@ -37,7 +49,14 @@ class SizeSelector extends React.Component {
         <div className="size-grid">
           {this.state.sizes.map((size, index) => {
             return (
-              <Button color='bg-light' onClick={this.onClick} key={index} className="border size-button btn btn-light">{size}</Button>
+              <Button
+                color="bg-light"
+                onClick={this.onClick}
+                key={index}
+                className="border size-button btn btn-light"
+              >
+                {size}
+              </Button>
             );
           })}
         </div>

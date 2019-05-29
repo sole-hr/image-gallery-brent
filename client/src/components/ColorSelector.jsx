@@ -14,16 +14,28 @@ class ColorSelector extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
+  fetchColorSelectorData(sku) {
+    Axios.get(`${process.env.API_URL}/api/colors/${sku}`)
+    .then(colors => {
+      this.setState({ 
+        sku: sku,
+        colors: colors.data });
+    })
+    .catch(err => { });
+  }
+
   componentDidMount() {
-    Axios.get(`${process.env.API_URL}/api/colors/${this.state.sku}`)
-      .then(colors => {
-        this.setState({ colors: colors.data });
-      })
-      .catch(err => { });
+    this.fetchColorSelectorData(this.state.sku);
   }
 
   onClick(event) {
     console.log(event.target.getAttribute('value'));
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.sku !== prevProps.sku) {
+      this.fetchColorSelectorData(this.props.sku);
+    }
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React from "react";
 import Axios from "axios";
-import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import '../styles/image-gallery.css';
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import "../styles/image-gallery.css";
 
 class ImageGallery extends React.Component {
   constructor(props) {
@@ -16,12 +16,25 @@ class ImageGallery extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
 
-  componentDidMount() {
-    Axios.get(`${process.env.API_URL}/api/images/${this.state.sku}`)
+  fetchImageData(sku) {
+    Axios.get(`${process.env.API_URL}/api/images/${sku}`)
       .then(images => {
-        this.setState({ images: images.data });
+        this.setState({
+          sku: sku,
+          images: images.data
+        });
       })
-      .catch(err => { });
+      .catch(err => {});
+  }
+
+  componentDidMount() {
+    this.fetchImageData(this.state.sku);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.sku !== prevProps.sku) {
+      this.fetchImageData(this.props.sku);
+    }
   }
 
   toggleModal() {
@@ -33,14 +46,21 @@ class ImageGallery extends React.Component {
       <div>
         <div>
           {this.state.images.map((image, index) => {
-            return <img id="shoe-image" onClick={this.toggleModal} key={index} src={image} />;
+            return (
+              <img
+                id="shoe-image"
+                onClick={this.toggleModal}
+                key={index}
+                src={image}
+              />
+            );
           })}
         </div>
         <Modal isOpen={this.state.modal}>
           <ModalBody>
             <div id="exit-modal">x</div>
             {this.state.images.map((image, index) => {
-              return <img key={index} src={image} />
+              return <img key={index} src={image} />;
             })}
           </ModalBody>
         </Modal>

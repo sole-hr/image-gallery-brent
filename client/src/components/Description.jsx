@@ -7,7 +7,7 @@ class Description extends React.Component {
     super(props);
 
     this.state = {
-      sku: props.sku,
+      sku: "CJ0066-900",
       description: "Loading..."
     };
   }

@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
@@ -50,6 +49,3 @@ class App extends React.Component {
 }
 export default App;
 window.App = App;
-// ReactDOM.render(<App />, document.getElementById("app"));
-
-// export default App;

@@ -8,7 +8,7 @@ class ColorSelector extends React.Component {
     super(props);
 
     this.state = {
-      sku: props.sku,
+      sku: "CJ0066-900",
       colors: []
     };
     this.onClick = this.onClick.bind(this);

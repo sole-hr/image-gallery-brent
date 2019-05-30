@@ -8,7 +8,7 @@ class ImageGallery extends React.Component {
     super(props);
 
     this.state = {
-      sku: props.sku,
+      sku: "CJ0066-900",
       images: [],
       modal: false
     };
@@ -69,6 +69,5 @@ class ImageGallery extends React.Component {
   }
 }
 
-export default ImageGallery;
-
 window.ImageGallery = ImageGallery;
+export default ImageGallery;

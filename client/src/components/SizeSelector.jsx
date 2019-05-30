@@ -8,7 +8,7 @@ class SizeSelector extends React.Component {
     super(props);
 
     this.state = {
-      sku: this.props.sku,
+      sku: "CJ0066-900",
       sizes: []
     };
 

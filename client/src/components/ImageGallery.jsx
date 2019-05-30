@@ -1,6 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import { Modal, ModalBody } from "reactstrap";
 import "../styles/image-gallery.css";
 
 class ImageGallery extends React.Component {

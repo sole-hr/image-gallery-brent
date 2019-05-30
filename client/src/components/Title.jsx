@@ -51,6 +51,6 @@ class Title extends React.Component {
     );
   }
 }
-
+console.log("TITLE SCRIPT EVALUATED");
 export default Title;
 window.Title = Title;

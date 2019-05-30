@@ -12,7 +12,7 @@ module.exports = {
     sizeSelector: `${SRC_DIR}/components/SizeSelector.jsx`,
     cartFavoriteButtons: `${SRC_DIR}/components/CartFavoriteButtons.jsx`,
     description: `${SRC_DIR}/components/Description.jsx`,
-    app: `${SRC_DIR}/components/App.jsx`,
+    app: `${SRC_DIR}/components/App.jsx`
   },
   output: {
     filename: "[name]-bundle.js",

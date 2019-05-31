@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import Axios from "axios";
 import { Modal, ModalBody } from "reactstrap";
 import "../styles/image-gallery.css";
@@ -94,3 +95,8 @@ class ImageGallery extends React.Component {
 
 window.ImageGallery = ImageGallery;
 export default ImageGallery;
+
+ReactDOM.render(
+  <ImageGallery />,
+  document.getElementById("image-gallery")
+);

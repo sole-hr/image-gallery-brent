@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import "../styles/cartfavorite-buttons.css";
 
 class CartFavoriteButtons extends React.Component {
@@ -48,3 +49,8 @@ class CartFavoriteButtons extends React.Component {
 
 window.CartFavoriteButtons = CartFavoriteButtons;
 export default CartFavoriteButtons;
+
+ReactDOM.render(
+  <CartFavoriteButtons />,
+  document.getElementById("cart-favorite-buttons")
+);

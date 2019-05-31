@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import "../styles/color-selector.css";
 import Axios from "axios";
 import { Button } from "reactstrap";
@@ -60,3 +61,4 @@ class ColorSelector extends React.Component {
 
 window.ColorSelector = ColorSelector;
 export default ColorSelector;
+ReactDOM.render(<ColorSelector />, document.getElementById("color-selector"));

@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import Axios from "axios";
 import "../styles/description.css";
 
@@ -45,3 +46,8 @@ class Description extends React.Component {
 
 window.Description = Description;
 export default Description;
+
+ReactDOM.render(
+  <Description />,
+  document.getElementById("description")
+);

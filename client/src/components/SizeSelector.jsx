@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import Axios from "axios";
 import "../styles/size-selector.css";
 import { Button } from "reactstrap";
@@ -64,3 +65,7 @@ class SizeSelector extends React.Component {
 
 window.SizeSelector = SizeSelector;
 export default SizeSelector;
+ReactDOM.render(
+  <SizeSelector />,
+  document.getElementById("size-selector")
+);

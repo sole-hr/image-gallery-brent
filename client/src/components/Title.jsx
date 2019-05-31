@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import Axios from "axios";
 import "../styles/title.css";
 
@@ -54,3 +55,8 @@ class Title extends React.Component {
 // console.log("TITLE SCRIPT EVALUATED");
 export default Title;
 window.Title = Title;
+
+ReactDOM.render(
+  <Title />,
+  document.getElementById("title")
+);

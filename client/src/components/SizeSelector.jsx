@@ -11,16 +11,16 @@ class SizeSelector extends React.Component {
       sku: "CJ0066-900",
       sizes: []
     };
-
-    this.onClick = this.onClick.bind(this);
+    this.onSizeClick = props.onSizeClick;
   }
 
   fetchSizeData(sku) {
     Axios.get(`${process.env.API_URL}/api/sizes/${sku}`)
       .then(sizes => {
-        this.setState({ 
+        this.setState({
           sku: sku,
-          sizes: sizes.data });
+          sizes: sizes.data
+        });
       })
       .catch(err => {});
   }
@@ -35,10 +35,6 @@ class SizeSelector extends React.Component {
     }
   }
 
-  onClick(event) {
-    console.log(event.target.getAttribute("value"));
-  }
-
   render() {
     return (
       <div>
@@ -51,9 +47,10 @@ class SizeSelector extends React.Component {
             return (
               <Button
                 color="bg-light"
-                onClick={this.onClick}
+                onClick={this.onSizeClick}
                 key={index}
                 className="border size-button btn btn-light"
+                value={size}
               >
                 {size}
               </Button>

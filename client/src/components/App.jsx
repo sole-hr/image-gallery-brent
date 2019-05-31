@@ -1,7 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 // AJ6900-401
 // AO2924-400
 // AH8050-002

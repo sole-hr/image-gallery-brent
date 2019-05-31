@@ -38,10 +38,27 @@ class ImageGallery extends React.Component {
   }
 
   toggleModal() {
-    this.setState(prevState => ({ modal: !prevState.modal }));
+    this.setState({ modal: !this.state.modal });
   }
 
   render() {
+    // const renderModal = isModalOpen => {
+    //   if (isModalOpen) {
+    //     return (
+    //       <Modal isOpen={this.state.modal}>
+    //         <ModalBody>
+    //           <div id="exit-modal">x</div>
+    //           {this.state.images.map((image, index) => {
+    //             return <img key={index} src={image} />;
+    //           })}
+    //         </ModalBody>
+    //       </Modal>
+    //     );
+    //   } else {
+    //     return null;
+    //   }
+    // };
+
     return (
       <div>
         <div>
@@ -56,9 +73,15 @@ class ImageGallery extends React.Component {
             );
           })}
         </div>
-        <Modal isOpen={this.state.modal}>
+        {/* {renderModal(this.state.modal)} */}
+        <Modal isOpen={this.state.modal} onClick={() => console.log("hi")}>
           <ModalBody>
-            <div id="exit-modal">x</div>
+            <div
+              id="exit-modal"
+              onClick={() => this.setState({ modal: false })}
+            >
+              x
+            </div>
             {this.state.images.map((image, index) => {
               return <img key={index} src={image} />;
             })}

@@ -1,7 +1,7 @@
 import React from "react";
-import '../styles/color-selector.css'
-import Axios from 'axios';
-import { Button } from 'reactstrap';
+import "../styles/color-selector.css";
+import Axios from "axios";
+import { Button } from "reactstrap";
 
 class ColorSelector extends React.Component {
   constructor(props) {
@@ -16,12 +16,13 @@ class ColorSelector extends React.Component {
 
   fetchColorSelectorData(sku) {
     Axios.get(`${process.env.API_URL}/api/colors/${sku}`)
-    .then(colors => {
-      this.setState({ 
-        sku: sku,
-        colors: colors.data });
-    })
-    .catch(err => { });
+      .then(colors => {
+        this.setState({
+          sku: sku,
+          colors: colors.data
+        });
+      })
+      .catch(err => {});
   }
 
   componentDidMount() {
@@ -29,7 +30,7 @@ class ColorSelector extends React.Component {
   }
 
   onClick(event) {
-    console.log(event.target.getAttribute('value'));
+    console.log(event.target.getAttribute("value"));
   }
 
   componentDidUpdate(prevProps) {
@@ -40,11 +41,16 @@ class ColorSelector extends React.Component {
 
   render() {
     return (
-      <div className='color-grid'>
+      <div className="color-grid">
         {this.state.colors.map((color, index) => {
           return (
-
-            <Button onClick={this.onClick} className="color-block" key={index} style={{ backgroundColor: color }} value={color}></Button>
+            <Button
+              onClick={this.onClick}
+              className="color-block"
+              key={index}
+              style={{ backgroundColor: color }}
+              value={color}
+            />
           );
         })}
       </div>

@@ -1,10 +1,16 @@
 .color-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
 }
 
 .size-button {
     height: 48px;
-    margin: 2.5px; 
-  }
-  
+    /* margin: 2.5px;  */
+}
+
+.color-block {
+    width: 48px;
+    height: 48px;
+    border: solid 1px black;
+}

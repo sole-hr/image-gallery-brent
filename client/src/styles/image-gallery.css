@@ -19,4 +19,5 @@
     height: 50%;
     width: 50%;
     padding: 1%;
+    /* filter: hue-rotate(90deg); */
   }

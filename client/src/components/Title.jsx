@@ -46,7 +46,7 @@ class Title extends React.Component {
           <p id="price" className="h6">
             ${this.state.price}
           </p>
-          <p className="h5">{this.state.title}</p>
+          <p className="h4">{this.state.title}</p>
         </div>
       </div>
     );

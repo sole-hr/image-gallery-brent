@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 import "../styles/color-selector.css";
 import Axios from "axios";
 import { Button } from "reactstrap";
@@ -10,9 +10,10 @@ class ColorSelector extends React.Component {
 
     this.state = {
       sku: "CJ0066-900",
-      colors: []
+      colors: [],
+      selectedColor: null
     };
-    this.onClick = this.onClick.bind(this);
+    this.onColorClick = this.onColorClick.bind(this);
   }
 
   fetchColorSelectorData(sku) {
@@ -27,11 +28,26 @@ class ColorSelector extends React.Component {
   }
 
   componentDidMount() {
+    window.addEventListener(
+      "productClickEvent",
+      event => {
+        this.setState({ sku: event.detail.sku }, () => {
+          this.fetchColorSelectorData(this.state.sku);
+        });
+      },
+      false
+    );
+
     this.fetchColorSelectorData(this.state.sku);
   }
 
-  onClick(event) {
-    console.log(event.target.getAttribute("value"));
+  onColorClick(event) {
+    this.setState({ selectedColor: event.target.value }, () => {
+      const colorClickEvent = new CustomEvent("colorClickEvent", {
+        detail: { sku: this.state.sku, color: this.state.selectedColor }
+      });
+      window.dispatchEvent(colorClickEvent);
+    });
   }
 
   componentDidUpdate(prevProps) {
@@ -42,12 +58,12 @@ class ColorSelector extends React.Component {
 
   render() {
     return (
-      <div className="color-grid">
+      <div className="color-grid mb-4">
         {this.state.colors.map((color, index) => {
           return (
             <Button
-              onClick={this.onClick}
-              className="color-block"
+              onClick={this.onColorClick}
+              className="color-block my-1"
               key={index}
               style={{ backgroundColor: color }}
               value={color}

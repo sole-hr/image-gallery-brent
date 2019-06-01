@@ -22,20 +22,24 @@ class ImageGallery extends React.Component {
       .then(images => {
         this.setState({
           sku: sku,
-          images: images.data
+          images: images.data.slice(0, 6)
         });
       })
       .catch(err => {});
   }
 
   componentDidMount() {
-    this.fetchImageData(this.state.sku);
-  }
+    window.addEventListener(
+      "productClickEvent",
+      (event) => {
+        this.setState({ sku: event.detail.sku }, () => {
+          this.fetchImageData(this.state.sku);
+        });
+      },
+      false
+    );
 
-  componentDidUpdate(prevProps) {
-    if (this.props.sku !== prevProps.sku) {
-      this.fetchImageData(this.props.sku);
-    }
+    this.fetchImageData(this.state.sku);
   }
 
   toggleModal() {
@@ -43,23 +47,6 @@ class ImageGallery extends React.Component {
   }
 
   render() {
-    // const renderModal = isModalOpen => {
-    //   if (isModalOpen) {
-    //     return (
-    //       <Modal isOpen={this.state.modal}>
-    //         <ModalBody>
-    //           <div id="exit-modal">x</div>
-    //           {this.state.images.map((image, index) => {
-    //             return <img key={index} src={image} />;
-    //           })}
-    //         </ModalBody>
-    //       </Modal>
-    //     );
-    //   } else {
-    //     return null;
-    //   }
-    // };
-
     return (
       <div>
         <div>
@@ -74,7 +61,6 @@ class ImageGallery extends React.Component {
             );
           })}
         </div>
-        {/* {renderModal(this.state.modal)} */}
         <Modal isOpen={this.state.modal} onClick={() => console.log("hi")}>
           <ModalBody>
             <div
@@ -96,7 +82,4 @@ class ImageGallery extends React.Component {
 window.ImageGallery = ImageGallery;
 export default ImageGallery;
 
-ReactDOM.render(
-  <ImageGallery />,
-  document.getElementById("image-gallery")
-);
+ReactDOM.render(<ImageGallery />, document.getElementById("image-gallery"));

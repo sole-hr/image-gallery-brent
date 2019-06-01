@@ -67,11 +67,11 @@ class CartFavoriteButtons extends React.Component {
       }
     });
     window.dispatchEvent(onCartClick);
-    window.alert(
-      `Product ID: ${this.state.sku}\nColor: ${this.state.color}\nSize: ${
-        this.state.size
-      }`
-    );
+    // window.alert(
+    //   `Product ID: ${this.state.sku}\nColor: ${this.state.color}\nSize: ${
+    //     this.state.size
+    //   }`
+    // );
   }
 
   render() {

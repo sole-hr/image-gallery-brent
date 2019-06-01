@@ -16,12 +16,31 @@ class ColorSelector extends React.Component {
     this.onColorClick = this.onColorClick.bind(this);
   }
 
+  shuffle(array) {
+    var currentIndex = array.length;
+    var temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
   fetchColorSelectorData(sku) {
     Axios.get(`${process.env.API_URL}/api/colors/${sku}`)
       .then(colors => {
         this.setState({
           sku: sku,
-          colors: colors.data
+          colors: this.shuffle(colors.data)
         });
       })
       .catch(err => {});

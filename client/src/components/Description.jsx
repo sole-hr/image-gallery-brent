@@ -25,6 +25,15 @@ class Description extends React.Component {
   }
 
   componentDidMount() {
+    window.addEventListener(
+      "productClickEvent",
+      event => {
+        this.setState({ sku: event.detail.sku }, () => {
+          this.fetchDescriptionData(this.state.sku);
+        });
+      },
+      false
+    );
     this.fetchDescriptionData(this.state.sku);
   }
 

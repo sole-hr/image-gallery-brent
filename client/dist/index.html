@@ -6,13 +6,30 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
   </head>
 
   <body>
-    <h1>THIS IS THE IMAGE GALLERY COMPONENT</h1>
-    <div id="app"></div>
+    <div id="navbar"></div>
+    <div class="container-fluid" id="override-container">
+      <div class="row" id="main-container">
+        <div class="col-lg-8 px-4">
+          <div  id="image-gallery"></div>
+          <div class="elfsight-app-2e9e9478-408c-46d2-b95a-fc6eb335785e"></div>       
+        <div class="col-lg-4 px-6">
+          <div class="my-4" id="title"></div>
+          <div id="color-selector"></div>
+          <div id="size-selector"></div>
+          <div class="my-3" id="cart-favorite-buttons"></div>
+          <div id="description"></div>
+          <div id="customer-reviews"></div>
+        </div>
+      </div>
+    </div>
+    <div id="carousel"></div>
   </body>
   <script src="./components-bundle.js"></script>
   <script src="./app-bundle.js"></script>

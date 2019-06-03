@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 import Axios from "axios";
 import "../styles/title.css";
 
@@ -29,6 +29,16 @@ class Title extends React.Component {
   }
 
   componentDidMount() {
+    window.addEventListener(
+      "productClickEvent",
+      event => {
+        this.setState({ sku: event.detail.sku }, () => {
+          this.fetchTitleData(this.state.sku);
+        });
+      },
+      false
+    );
+
     this.fetchTitleData(this.state.sku);
   }
 
@@ -56,7 +66,4 @@ class Title extends React.Component {
 export default Title;
 window.Title = Title;
 
-ReactDOM.render(
-  <Title />,
-  document.getElementById("title")
-);
+ReactDOM.render(<Title />, document.getElementById("title"));

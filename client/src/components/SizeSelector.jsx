@@ -62,7 +62,7 @@ class SizeSelector extends React.Component {
         <div className="size-title">
           <p className="h6" id="select-size">Select Size</p>
           <p className="text-muted" id="size-guide">Size Guide</p> 
-        </div>
+        </div>api/:info/:sku
         <div className="size-grid">
           {this.state.sizes.map((size, index) => {
             return (

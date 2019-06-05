@@ -34,18 +34,37 @@ let shoeSchema = mongoose.Schema({
 
 const Shoe = mongoose.model("Shoe", shoeSchema);
 
-const dbSave = data => {
-  Shoe.insertMany(data, (err, response) => {
+
+const findRecord = (object, callback) => {
+  Shoe.find(object, (err, data) => {
     if (err) {
-      console.log("insertion error: ", err);
-    } else {
-      Shoe.update(data, {
-        upsert: true
-      });
-      console.log('SEEDED DB');
+      console.log(err);
     }
-  });
+    callback(null, data);
+  }); 
 };
 
 
-module.exports.Shoe = Shoe;
+module.exports.findRecord = findRecord;
+
+
+
+
+
+
+
+//USED TO SEED DATABASE///
+// const dbSave = data => {
+//   Shoe.insertMany(data, (err, response) => {
+//     if (err) {
+//       console.log("insertion error: ", err);
+//     } else {
+//       Shoe.update(data, {
+//         upsert: true
+//       });
+//       console.log('SEEDED DB');
+//     }
+//   });
+// };
+
+// module.exports.Shoe = Shoe;

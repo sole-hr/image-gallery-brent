@@ -36,7 +36,7 @@ const Shoe = mongoose.model("Shoe", shoeSchema);
 
 
 const findRecord = (object, callback) => {
-  Shoe.find(object, (err, data) => {
+  Shoe.findOne(object, (err, data) => {
     if (err) {
       console.log(err);
     }
@@ -44,8 +44,27 @@ const findRecord = (object, callback) => {
   }); 
 };
 
+const insertRecord = (object, callback) => {
+  Shoe.create(object, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    callback(null, data);
+  });
+};
+
+const updateRecord = (filter, doc,callback) => {
+  Shoe.updateOne(filter, doc, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    callback(null, data);
+  });
+};
 
 module.exports.findRecord = findRecord;
+module.exports.insertRecord = insertRecord;
+module.exports.updateRecord = updateRecord;
 
 
 

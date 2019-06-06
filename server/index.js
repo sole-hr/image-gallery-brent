@@ -11,9 +11,8 @@ app.use(cors());
 app.use(express.static(__dirname + "/../client/dist"));
 
 
-
+//gets one record from database
 app.get("/api/:info/:sku", (req, res) => {
-  console.log(req.params);
   let skuId = req.params.sku;
   let infoId = req.params.info;
   db.findRecord({sku: skuId}, (err, data) => {
@@ -21,14 +20,55 @@ app.get("/api/:info/:sku", (req, res) => {
       console.log(err);
       res.end();
     }
-    // console.log(data);
+    if (infoId === 'title') {
+     responseData = {
+        productName: data.productName,
+          price: data.price,
+          category: data.category
+      };
+    } else {
+      responseData = data[infoId];
+    }
+      res.json(responseData);
+      res.end();
+  });
+});
+
+//creates a record in the database
+app.put('/api/:info/:sku', (req, res) => {
+  let skuId = req.params.sku;
+  let infoId = req.params.info;
+  db.insertRecord(req.body, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.end;
+    }
     res.send(data);
   });
 });
 
+//updates a record in the database
+app.put('/api/:info/:sku', (req, res) => {
+  let skuId = req.params.sku;
+  let infoId = req.params.info;
+  db.updateRecord(skuId, req.body, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.end();
+    }
+    res.send(data);
+  });
+});
+
+
 app.listen(port, () => {
   console.log("Ken's service listening on port, ", port);
 });
+
+
+
+
+
 
 
 //KENS GET REQUEST//

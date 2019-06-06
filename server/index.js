@@ -35,7 +35,7 @@ app.get("/api/:info/:sku", (req, res) => {
 });
 
 //creates a record in the database
-app.put('/api/:info/:sku', (req, res) => {
+app.post('/api/:info/:sku', (req, res) => {
   let skuId = req.params.sku;
   let infoId = req.params.info;
   db.insertRecord(req.body, (err, data) => {
@@ -60,6 +60,17 @@ app.put('/api/:info/:sku', (req, res) => {
   });
 });
 
+//deletes a record from the database
+app.delete('/api/:info/:sku', (req, res) => {
+  let skuId = req.params.sku;
+  let infoId = req.params.info;
+  db.deleteRecord(skuId, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    res.send(data);
+  });
+});
 
 app.listen(port, () => {
   console.log("Ken's service listening on port, ", port);

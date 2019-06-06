@@ -53,7 +53,7 @@ const insertRecord = (object, callback) => {
   });
 };
 
-const updateRecord = (filter, doc,callback) => {
+const updateRecord = (filter, doc, callback) => {
   Shoe.updateOne(filter, doc, (err, data) => {
     if (err) {
       console.log(err);
@@ -62,10 +62,19 @@ const updateRecord = (filter, doc,callback) => {
   });
 };
 
+const deleteRecord = (object, callback) => {
+  Shoe.deleteOne(object, (err, res) => {
+    if (err) {
+      console.log(err);
+    }
+    callback(null, res);
+  });
+};
+
 module.exports.findRecord = findRecord;
 module.exports.insertRecord = insertRecord;
 module.exports.updateRecord = updateRecord;
-
+module.exports.deleteRecord = deleteRecord;
 
 
 

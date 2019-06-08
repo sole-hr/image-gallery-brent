@@ -3,9 +3,11 @@ const mongoose = require("mongoose");
 const shoeData = require("../shoedata/shoedata.json");
 const database = 'fike';
 
-mongoose.connect(`mongodb+srv://image-gallery-root:${process.env.DB_PW}@image-gallery-db-d2iku.mongodb.net/${database}?retryWrites=true`, {
-  useNewUrlParser: true
-});
+// mongoose.connect(`mongodb+srv://image-gallery-root:${process.env.DB_PW}@image-gallery-db-d2iku.mongodb.net/${database}?retryWrites=true`, {
+//   useNewUrlParser: true
+// });
+
+mongoose.connect(`mongodb://localhost:27017/sdc`, {useNewUrlParser: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -16,23 +18,23 @@ db.once('open', function () {
 let shoeSchema = mongoose.Schema({
   productName: String,
   category: String,
-  sku: String,
+  sku: Number,
   brand: String,
   price: Number,
   description: String,
   colors: [String],
   sizes: [Number],
   images: [String],
-  reviews: [{
-    user: String,
-    date: String,
-    stars: Number,
-    title: String,
-    description: String
-  }]
+  // reviews: [{
+  //   user: String,
+  //   date: String,
+  //   stars: Number,
+  //   title: String,
+  //   description: String
+  // }]
 });
 
-const Shoe = mongoose.model("Shoe", shoeSchema);
+const Shoe = mongoose.model("Shoe", shoeSchema, 'shoes');
 
 
 const findRecord = (object, callback) => {
@@ -40,6 +42,7 @@ const findRecord = (object, callback) => {
     if (err) {
       console.log(err);
     }
+    console.log(data);
     callback(null, data);
   }); 
 };

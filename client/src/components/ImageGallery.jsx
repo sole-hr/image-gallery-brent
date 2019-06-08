@@ -9,7 +9,8 @@ class ImageGallery extends React.Component {
     super(props);
 
     this.state = {
-      sku: "CJ0066-900",
+      sku: '1',
+      //"CJ0066-900
       images: [],
       modal: false
     };
@@ -20,6 +21,7 @@ class ImageGallery extends React.Component {
   fetchImageData(sku) {
     Axios.get(`${process.env.API_URL}/api/images/${sku}`)
       .then(images => {
+        console.log(images)
         this.setState({
           sku: sku,
           images: images.data.slice(0, 6)

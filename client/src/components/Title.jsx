@@ -8,7 +8,8 @@ class Title extends React.Component {
     super(props);
 
     this.state = {
-      sku: "CJ0066-900",
+      sku: "1",
+      //"CJ0066-900
       title: "Loading...",
       price: "Loading...",
       category: "Loading..."

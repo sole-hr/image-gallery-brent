@@ -13,7 +13,7 @@ app.use(express.static(__dirname + "/../client/dist"));
 
 //gets one record from database
 app.get("/api/:info/:sku", (req, res) => {
-  let skuId = req.params.sku;
+  let skuId = Number(req.params.sku);
   let infoId = req.params.info;
   db.findRecord({sku: skuId}, (err, data) => {
     if (err) {

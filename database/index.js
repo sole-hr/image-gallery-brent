@@ -7,7 +7,7 @@ const database = 'fike';
 //   useNewUrlParser: true
 // });
 
-mongoose.connect(`mongodb://localhost:27017/sdc`, {useNewUrlParser: true});
+mongoose.connect(`mongodb://localhost:27017/sdc`, {useNewUrlParser: true}); //, {useNewUrlParser: true}
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -25,6 +25,7 @@ let shoeSchema = mongoose.Schema({
   colors: [String],
   sizes: [Number],
   images: [String],
+  // tags: { sku: [Number], index: false } 
   // reviews: [{
   //   user: String,
   //   date: String,
@@ -37,12 +38,13 @@ let shoeSchema = mongoose.Schema({
 const Shoe = mongoose.model("Shoe", shoeSchema, 'shoes');
 
 
+
+
 const findRecord = (object, callback) => {
   Shoe.findOne(object, (err, data) => {
     if (err) {
       console.log(err);
     }
-    console.log(data);
     callback(null, data);
   }); 
 };
@@ -82,20 +84,3 @@ module.exports.deleteRecord = deleteRecord;
 
 
 
-
-
-//USED TO SEED DATABASE///
-// const dbSave = data => {
-//   Shoe.insertMany(data, (err, response) => {
-//     if (err) {
-//       console.log("insertion error: ", err);
-//     } else {
-//       Shoe.update(data, {
-//         upsert: true
-//       });
-//       console.log('SEEDED DB');
-//     }
-//   });
-// };
-
-// module.exports.Shoe = Shoe;

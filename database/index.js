@@ -19,10 +19,12 @@ client.connect((err) => {
   }
 })
 
+//INNER JOIN payment ON payment.customer_id = customer.customer_id;
+
 
 
 const getOneShoe = (sku, callback) => {
-  client.query(`select * from shoes where sku = ${sku}`, (err, data) => {
+  client.query(`SELECT * FROM shoes NATURAL JOIN colors NATURAL JOIN sizes where sku = ${sku}`, (err, data) => {
     if (err) {
       console.log(err);
       callback(err, null);

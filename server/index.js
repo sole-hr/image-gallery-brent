@@ -21,7 +21,7 @@ app.get("/api/:info/:sku", (req, res) => {
       console.log('error getting shoes from db', error);
       res.end();
     } else {
-      res.send(response);
+      res.json(response.rows);
     }
   });
 });

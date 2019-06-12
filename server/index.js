@@ -35,22 +35,29 @@ app.get("/api/:info/:sku", (req, res) => {
 });
 
 //creates a record in the database
-app.post('/api/:info/:sku', (req, res) => {
+app.post('/api/:info', (req, res) => {
   let skuId = req.params.sku;
   let infoId = req.params.info;
-  db.insertRecord(req.body, (err, data) => {
+  db.findHighestSku({}, (err, data) => {
     if (err) {
       console.log(err);
-      res.end;
     }
     res.send(data);
-  });
+  })
+  // db.insertRecord(req.body, (err, data) => {
+  //   if (err) {
+  //     console.log(err);
+  //     res.end;
+  //   }
+  //   res.send(data);
+  // });
 });
 
 //updates a record in the database
-app.put('/api/:info/:sku', (req, res) => {
+app.put('/api/:info/', (req, res) => {
   let skuId = req.params.sku;
   let infoId = req.params.info;
+  console.log(req.body);
   db.updateRecord(skuId, req.body, (err, data) => {
     if (err) {
       console.log(err);

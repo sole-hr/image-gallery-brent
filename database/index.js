@@ -49,6 +49,17 @@ const findRecord = (object, callback) => {
   }); 
 };
 
+const findHighestSku = (object, callback) => {
+  Shoe.find(object, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    callback(null, data);
+  }).sort({sku : -1}).limit(1);
+};
+
+
+
 const insertRecord = (object, callback) => {
   Shoe.create(object, (err, data) => {
     if (err) {
@@ -76,11 +87,13 @@ const deleteRecord = (object, callback) => {
   });
 };
 
-module.exports.findRecord = findRecord;
-module.exports.insertRecord = insertRecord;
-module.exports.updateRecord = updateRecord;
-module.exports.deleteRecord = deleteRecord;
-
+module.exports ={
+  findRecord,
+  insertRecord,
+  updateRecord,
+  deleteRecord,
+  findHighestSku
+}
 
 
 

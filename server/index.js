@@ -39,13 +39,11 @@ app.get("/api/:info/:sku", (req, res) => {
 
 //creates a record in the database
 app.post('/api/:info', (req, res) => {
-  console.log(req.body);
   db.findHighestSku({}, (err, data) => {
     if (err) {
       console.log(err);
       res.end();
     } else {
-      
       let newSku = data.sku + 1;
       req.body['sku'] = newSku;
       db.insertRecord(req.body, (err, info) => {
@@ -53,19 +51,17 @@ app.post('/api/:info', (req, res) => {
           console.log(err);
           res.end();
         }
-        // console.log(info);
         res.send(info);
       })
     }
   })
 });
+      
 
 //updates a record in the database
-app.put('/api/:info/', (req, res) => {
+app.put('/api/:info/:sku', (req, res) => {
   let skuId = req.params.sku;
-  let infoId = req.params.info;
-  console.log(req.body);
-  db.updateRecord(skuId, req.body, (err, data) => {
+  db.updateRecord({sku: skuId}, req.body, (err, data) => {
     if (err) {
       console.log(err);
       res.end();
@@ -77,8 +73,7 @@ app.put('/api/:info/', (req, res) => {
 //deletes a record from the database
 app.delete('/api/:info/:sku', (req, res) => {
   let skuId = req.params.sku;
-  let infoId = req.params.info;
-  db.deleteRecord(skuId, (err, data) => {
+  db.deleteRecord({sku: skuId}, (err, data) => {
     if (err) {
       console.log(err);
     }

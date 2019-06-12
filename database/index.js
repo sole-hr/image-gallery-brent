@@ -25,14 +25,6 @@ let shoeSchema = mongoose.Schema({
   colors: [String],
   sizes: [Number],
   images: [String],
-  // tags: { sku: [Number], index: false } 
-  // reviews: [{
-  //   user: String,
-  //   date: String,
-  //   stars: Number,
-  //   title: String,
-  //   description: String
-  // }]
 });
 
 const Shoe = mongoose.model("Shoe", shoeSchema, 'shoes');

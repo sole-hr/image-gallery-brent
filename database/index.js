@@ -50,7 +50,7 @@ const findRecord = (object, callback) => {
 };
 
 const findHighestSku = (object, callback) => {
-  Shoe.find(object, (err, data) => {
+  Shoe.findOne(object, (err, data) => {
     if (err) {
       console.log(err);
     }

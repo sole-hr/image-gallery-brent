@@ -11,6 +11,9 @@ app.use(cors());
 app.use(express.static(__dirname + "/../client/dist"));
 
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 //gets one record from database
 app.get("/api/:info/:sku", (req, res) => {
   let skuId = Number(req.params.sku);
@@ -36,21 +39,25 @@ app.get("/api/:info/:sku", (req, res) => {
 
 //creates a record in the database
 app.post('/api/:info', (req, res) => {
-  let skuId = req.params.sku;
-  let infoId = req.params.info;
+  console.log(req.body);
   db.findHighestSku({}, (err, data) => {
     if (err) {
       console.log(err);
+      res.end();
+    } else {
+      
+      let newSku = data.sku + 1;
+      req.body['sku'] = newSku;
+      db.insertRecord(req.body, (err, info) => {
+        if (err) {
+          console.log(err);
+          res.end();
+        }
+        // console.log(info);
+        res.send(info);
+      })
     }
-    res.send(data);
   })
-  // db.insertRecord(req.body, (err, data) => {
-  //   if (err) {
-  //     console.log(err);
-  //     res.end;
-  //   }
-  //   res.send(data);
-  // });
 });
 
 //updates a record in the database
@@ -80,7 +87,7 @@ app.delete('/api/:info/:sku', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("Ken's service listening on port, ", port);
+  console.log("Brent's service listening on port, ", port);
 });
 
 
